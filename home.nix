@@ -152,5 +152,14 @@
         PASSWORD_STORE_ENABLE_EXTENSIONS = "true";
       };
     };
+    nh = {
+      enable = true;
+      flake = "/home/zeth/.local/src/dotfiles";
+    };
+  };
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
   };
 }
