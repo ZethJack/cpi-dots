@@ -3,6 +3,7 @@ alias yt='yt-dlp --add-metadata -i --external-downloader aria2c:"-c -j 3 -x 3 -k
 alias yta='yt -x -f bestaudio/best --audio-format opus'
 alias yta-ogg='yt -x -f bestaudio/best --audio-format ogg'
 alias tat='tmux a || tmux'
+alias nhhs='nh home switch'
 gifenc() {
   local input="$1"
   local output="${input%.*}.gif"

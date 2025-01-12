@@ -29,6 +29,10 @@
     git
     fastfetch
     ffmpeg
+    gcr
+    noto-fonts-emoji
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -157,9 +161,21 @@
       flake = "/home/zeth/.local/src/dotfiles";
     };
   };
+  
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1800;
     enableSshSupport = true;
+    pinentryPackage = pkgs.pinentry-gtk2;
+  };
+
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font Mono" ];
+      sansSerif = [ "JetBrainsMono Nerd Font" ];
+      serif = [ "JetBrainsMono Nerd Font" ];
+    };
   };
 }

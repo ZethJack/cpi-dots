@@ -89,6 +89,7 @@ fi
 export EDITOR='hx'
 export SUDO_EDITOR='/home/zeth/.nix-profile/bin/hx'
 export PASSWORD_STORE_DIR='/home/zeth/.local/share/password_store'
+export FLAKE='/home/zeth/.local/src/dotfiles'
 
 # some more ls aliases
 alias ll='ls -l'
