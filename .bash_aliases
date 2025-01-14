@@ -4,6 +4,7 @@ alias yta='yt -x -f bestaudio/best --audio-format opus'
 alias yta-ogg='yt -x -f bestaudio/best --audio-format ogg'
 alias tat='tmux a || tmux'
 alias nhhs='nh home switch'
+alias mkd='mkdir -pv'
 gifenc() {
   local input="$1"
   local output="${input%.*}.gif"
