@@ -9,10 +9,13 @@
     };
   };
 
-  outputs = {...} @ inputs: {
+  outputs = { nixpkgs, home-manager, nvf, ... }: let
+    system = "aarch64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
     homeConfigurations = {
-      "zeth" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages."aarch64-linux";
+      "zeth@clockworkpi" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         modules = [
           ./home.nix
         ];
