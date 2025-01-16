@@ -116,7 +116,7 @@
     languages = {
       language-server.nixd = {
         command = "nixd";
-        args = [ "--inlay-hints = true" ];
+        args = [ "--inlay-hints=true" ];
       };
       language = [{
         name = "nix";
