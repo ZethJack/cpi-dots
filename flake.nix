@@ -14,7 +14,7 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     homeConfigurations = {
-      "zeth@clockworkpi" = home-manager.lib.homeManagerConfiguration {
+      "zeth" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./home.nix
