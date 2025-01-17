@@ -128,6 +128,7 @@
           name = "nix";
           scope = "source.nix";
           injection-regex = "nix";
+          auto-format = true;
           file-types = ["nix"];
           comment-token = "#";
           formatter = {command = "alejandra";};
