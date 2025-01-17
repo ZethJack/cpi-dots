@@ -39,6 +39,7 @@
     tofi
     nixd
     alejandra
+    shfmt
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -121,6 +122,7 @@
         command = "nixd";
         args = ["--inlay-hints=true"];
       };
+
       language = [
         {
           name = "nix";
@@ -134,6 +136,11 @@
             unit = "  ";
           };
           language-servers = ["nixd"];
+        }
+        {
+          name = "bash";
+          auto-format = true;
+          formatter.command = "${pkgs.shellharden}/bin/shfmt";
         }
       ];
     };
