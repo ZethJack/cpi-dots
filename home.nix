@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "zeth";
@@ -23,6 +25,7 @@
     # pkgs.hello
     # vesktop
     bat
+    bash-language-server
     yt-dlp
     mpv
     lazygit
@@ -57,8 +60,8 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-      ".bashrc".source = ./.bashrc;
-      ".bash_aliases".source = ./.bash_aliases;
+    ".bashrc".source = ./.bashrc;
+    ".bash_aliases".source = ./.bash_aliases;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -116,18 +119,23 @@
     languages = {
       language-server.nixd = {
         command = "nixd";
-        args = [ "--inlay-hints=true" ];
+        args = ["--inlay-hints=true"];
       };
-      language = [{
-        name = "nix";
-        scope = "source.nix";
-        injection-regex = "nix";
-        file-types = ["nix"];
-        comment-token = "#";
-        formatter = { command = "alejandra";};
-        indent = { tab-width = 2; unit = "  "; };
-        language-servers = [ "nixd" ];
-      }];
+      language = [
+        {
+          name = "nix";
+          scope = "source.nix";
+          injection-regex = "nix";
+          file-types = ["nix"];
+          comment-token = "#";
+          formatter = {command = "alejandra";};
+          indent = {
+            tab-width = 2;
+            unit = "  ";
+          };
+          language-servers = ["nixd"];
+        }
+      ];
     };
   };
 
@@ -164,7 +172,7 @@
       flake = "/home/zeth/.local/src/dotfiles";
     };
   };
-  
+
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1800;
@@ -172,13 +180,12 @@
     pinentryPackage = pkgs.pinentry-gtk2;
   };
 
-
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ "JetBrainsMono Nerd Font Mono" ];
-      sansSerif = [ "JetBrainsMono Nerd Font" ];
-      serif = [ "JetBrainsMono Nerd Font" ];
+      monospace = ["JetBrainsMono Nerd Font Mono"];
+      sansSerif = ["JetBrainsMono Nerd Font"];
+      serif = ["JetBrainsMono Nerd Font"];
     };
   };
 }

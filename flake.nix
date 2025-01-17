@@ -9,7 +9,11 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: let
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
