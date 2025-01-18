@@ -63,6 +63,10 @@
     # ".screenrc".source = dotfiles/screenrc;
     ".bashrc".source = ./.bashrc;
     ".bash_aliases".source = ./.bash_aliases;
+    ".local/bin" = {
+      source = ./scripts;
+      recursive = true;
+    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
