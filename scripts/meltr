@@ -6,6 +6,6 @@ fi
 
 mlt_file="$1"
 
-melt_command="melt -progress $mlt_file -consumer avformat:output.mp4 vcodec=libx264 acodec=aac b=12M ab=384k s=1920x1080 r=30 preset=veryfast movflags=+faststart"
+melt_command="melt -progress $mlt_file -consumer avformat:output.mp4 vcodec=libx264 acodec=aac crf=23 ab=384k s=1920x1080 r=30 preset=fast movflags=+faststart profile=high"
 
 eval "$melt_command"
