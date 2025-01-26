@@ -36,7 +36,8 @@
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
-    tofi
+    wofi
+    wofi-pass
     nixd
     alejandra
     shfmt
@@ -93,6 +94,8 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    PASSWORD_STORE_DIR = "$HOME/.local/share/password_store";
+    PASSWORD_STORE_ENABLE_EXTENSIONS = "true";
   };
 
   # Let Home Manager install and manage itself.
