@@ -2,10 +2,12 @@
   pkgs,
   config,
   lib,
-  osConfig,
   ...
 }: {
-  xdg.configFile."lf/icons".source = ./icons;
+  # xdg.configFile."lf/icons".source = ./lf/icons;
+  home.file = {
+    ".config/lf/icons".source = ../files/lficons;
+  };
 
   programs.lf = {
     enable = true;

@@ -66,8 +66,8 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".bashrc".source = ./.bashrc;
-    ".bash_aliases".source = ./.bash_aliases;
+    ".bashrc".source = ./files/.bashrc;
+    ".bash_aliases".source = ./files/.bash_aliases;
     ".local/bin" = {
       source = ./scripts;
       recursive = true;
