@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports =
+    builtins.map
+    (m: ./modules + "/${m}")
+    (builtins.attrNames (builtins.readDir ./modules));
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "zeth";
