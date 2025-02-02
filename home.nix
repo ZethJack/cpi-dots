@@ -32,23 +32,24 @@ in {
     # # "Hello, world!" when run.
     # pkgs.hello
     # vesktop
-    bat
+    alejandra
     bash-language-server
-    yt-dlp
-    mpv
-    lazygit
-    git
+    bat
     fastfetch
     ffmpeg
+    fzf
     gcr
-    noto-fonts-emoji
-    nerd-fonts.jetbrains-mono
+    git
+    lazygit
+    mpv
     nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nixd
+    noto-fonts-emoji
+    shfmt
     wofi
     wofi-pass
-    nixd
-    alejandra
-    shfmt
+    yt-dlp
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -195,6 +196,10 @@ in {
     nh = {
       enable = true;
       flake = "/home/zeth/.local/src/dotfiles";
+    };
+    fzf = {
+      enable = true;
+      enableBashIntegration = true;
     };
   };
 
