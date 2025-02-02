@@ -1,8 +1,11 @@
-{...}: let
-  hostname = builtins.replaceStrings ["\n"] [""] (builtins.readFile "/etc/hostname");
-
+{
+  lib,
+  hostname,
+  ...
+}: let
+  # hostname = builtins.replaceStrings ["\n"] [""] (builtins.readFile "/etc/hostname");
   fontName =
-    if hostname == "clockworkpi"
+    if lib.hasPrefix "clockworkpi" hostname
     then "Monospace 16"
     else "Monospace 10";
 in {
