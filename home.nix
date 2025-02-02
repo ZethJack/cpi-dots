@@ -41,6 +41,8 @@ in {
     gcr
     git
     lazygit
+    lemminx
+    libxml2
     mpv
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
@@ -139,6 +141,11 @@ in {
         args = ["--inlay-hints=true"];
       };
 
+      language-server.xml = {
+        command = "lemminx"; # Assuming you're using LemMinX for XML language server
+        args = [];
+      };
+
       language = [
         {
           name = "nix";
@@ -159,9 +166,21 @@ in {
           auto-format = true;
           formatter.command = "${pkgs.shellharden}/bin/shfmt";
         }
+        {
+          name = "xml";
+          scope = "text.xml";
+          file-types = ["xml"];
+          auto-format = true;
+          formatter = {
+            command = "xmllint"; # Using xmllint for formatting
+            args = ["--format" "-"];
+          };
+          language-servers = ["xml"];
+        }
       ];
     };
   };
+
   nixpkgs.config.allowUnfree = true;
   _module.args.hostname = builtins.readFile "${hostname}";
 
