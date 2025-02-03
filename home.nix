@@ -2,11 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  hostname = pkgs.runCommand "hostname" {} ''
-    echo $(hostname) > $out
-  '';
-in {
+}: {
   imports =
     builtins.map
     (m: ./modules + "/${m}")
@@ -113,7 +109,6 @@ in {
   programs.home-manager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  _module.args.hostname = builtins.readFile "${hostname}";
 
   programs = {
     mpv = {

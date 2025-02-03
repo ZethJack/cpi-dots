@@ -18,10 +18,22 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     homeConfigurations = {
-      "zeth" = home-manager.lib.homeManagerConfiguration {
+      "zeth@clockworkpi" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./home.nix
+          ({...}: {
+            _module.args.hostname = "clockworkpi";
+          })
+        ];
+      };
+      "zeth@raspberrypi" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home.nix
+          ({...}: {
+            _module.args.hostname = "raspberrypi";
+          })
         ];
       };
     };
