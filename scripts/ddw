@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+#make sure pv is installed
+if ! command -v pv &> /dev/null; then
+  echo "pv command not found, please install pv to use this script"
+  exit 1
+fi
+
+#dry run check
+dry_run=false
+if [ "$1" = "-n" ] || [ "$1" = "--dry-run" ]; then
+  dry_run=true
+  shift
+fi
+
+input="$1"
+output="$2"
+
+if [ -z "$input" ] || [ -z "$output" ]; then
+  echo "Usage: ddw [-n|--dry-run] <input> <output>"
+  exit 1
+fi
+
+
+# Determine size based on whether input is a device or a regular file
+case "$(file -b "$input")" in
+  *"block special"*)
+    # For block devices
+    size=$(blockdev --getsize64 "$input" 2>/dev/null || lsblk -b -o SIZE -n "$input" 2>/dev/null)
+    if [ -z "$size" ]; then
+      echo "Error determining size of device $input"
+      exit 1
+    fi
+    ;;
+  *)
+    # For regular files
+    size=$(du -b "$input" 2>/dev/null | cut -f1)
+    if [ -z "$size" ]; then
+      echo "Error determining size of file $input"
+      exit 1
+    fi
+    ;;
+esac
+
+bs=$(( 4 * 1024 * 1024 ))
+
+echo "Size of $input: $(numfmt --to=iec-i --suffix=B "$size")"
+case "$dry_run" in
+  true)
+    echo "Dry run: Simulating transfer..."
+    dd if="$input" status=none | pv -s "$size" > /dev/null
+    echo "Dry run is done..."
+    ;;
+  *)
+    echo "Starting transfer"
+    dd if="$input" status=none | pv -s "$size" | dd of="$output" bs="$bs" conv=fsync status=none
+    echo "It is done..."
+  ;;
+esac
