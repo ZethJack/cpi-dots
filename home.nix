@@ -31,6 +31,7 @@
     alejandra
     bash-language-server
     bat
+    cabextract
     fastfetch
     ffmpeg
     fzf
@@ -44,7 +45,10 @@
     nerd-fonts.jetbrains-mono
     nixd
     noto-fonts-emoji
+    p7zip
     shfmt
+    unrar
+    unzip
     wofi
     wofi-pass
     yt-dlp
