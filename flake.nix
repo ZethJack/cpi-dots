@@ -9,33 +9,21 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  }: let
-    system = "aarch64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+outputs = { nixpkgs, home-manager, ... }: let
+    mkHomeConfig = system: hostname: home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = [
+        ./home.nix
+        ({...}: {
+          _module.args.hostname = hostname;
+        })
+      ];
+    };
   in {
     homeConfigurations = {
-      "zeth@clockworkpi" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home.nix
-          ({...}: {
-            _module.args.hostname = "clockworkpi";
-          })
-        ];
-      };
-      "zeth@raspberrypi" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home.nix
-          ({...}: {
-            _module.args.hostname = "raspberrypi";
-          })
-        ];
-      };
+      "zeth@clockworkpi" = mkHomeConfig "aarch64-linux" "clockworkpi";
+      "zeth@raspberrypi" = mkHomeConfig "aarch64-linux" "raspberrypi";
+      "zeth@nixos" = mkHomeConfig "x86_64-linux" "nixos";
     };
   };
 }
