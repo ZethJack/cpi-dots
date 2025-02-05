@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+alias ccd='cd ~/.local/src/dotfiles'
 alias yt='yt-dlp --add-metadata -i --external-downloader aria2c:"-c -j 3 -x 3 -k 1M" --sponsorblock-remove sponsor,selfpromo,interaction -o "%(title)s.%(ext)s"'
 alias yta='yt -x -f bestaudio/best --audio-format opus'
 alias yta-ogg='yt -x -f bestaudio/best --audio-format ogg'
