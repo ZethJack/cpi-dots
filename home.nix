@@ -41,6 +41,9 @@
     lemminx
     libxml2
     mpv
+    nodePackages.yaml-language-server
+    ansible
+    ansible-language-server
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nixd

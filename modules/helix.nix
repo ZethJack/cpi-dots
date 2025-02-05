@@ -33,6 +33,16 @@
         args = [];
       };
 
+      language-server.yaml = {
+        command = "yaml-language-server";
+        args = ["--stdio"];
+      };
+
+      language-server.ansible = {
+        command = "ansible-language-server";
+        args = ["--stdio"];
+      };
+
       language = [
         {
           name = "nix";
@@ -63,6 +73,19 @@
             args = ["--format" "-"];
           };
           language-servers = ["xml"];
+        }
+        {
+          name = "yaml";
+          scope = "source.yaml";
+          file-types = ["yaml" "yml"];
+          auto-format = true;
+          language-servers = ["yaml"];
+        }
+        {
+          name = "ansible";
+          scope = "source.ansible";
+          file-types = ["yml.ansible" "yaml.ansible"];
+          language-servers = ["ansible"];
         }
       ];
     };
