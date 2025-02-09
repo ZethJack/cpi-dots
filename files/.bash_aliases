@@ -6,6 +6,10 @@ alias yta-ogg='yt -x -f bestaudio/best --audio-format ogg'
 alias tat='tmux a || tmux'
 alias nhhs='nh home switch'
 alias mkd='mkdir -pv'
+alias cdd='cd ~/.local/src/dotfiles'
+alias cdf='cdd ; hx $(pwd)'
+alias cdb='cdd ; nhhs'
+alias lg="lazygit"
 gifenc() {
   local input="$1"
   local output="${input%.*}.gif"
