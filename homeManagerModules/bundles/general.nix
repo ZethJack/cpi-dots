@@ -53,6 +53,6 @@
   ];
 
   home.sessionVariables = {
-    FLAKE = "${config.home.homeDirectory}/.local/src/dotfiles";
+    FLAKE = "/home/zeth/.local/src/dotfiles";
   };
 }

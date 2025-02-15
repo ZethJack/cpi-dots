@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   home.username = "zeth";
@@ -16,6 +17,7 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
   myHomeManager = {
     bundles.general.enable = true;
+    lxterminal.enable = lib.mkDefault true;
   };
 
   home.file = {
