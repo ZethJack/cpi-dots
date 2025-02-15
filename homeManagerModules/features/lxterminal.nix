@@ -14,7 +14,7 @@ in {
       description = "Font name and size for lxterminal";
     };
   };
-  config = lib.mkIF cfg.enable {
+  config = lib.mkIf cfg.enable {
     xdg.configFile."lxterminal/lxterminal.conf".text = ''
       [general]
       fontname=${cfg.fontname}
