@@ -3,11 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.programs.lxterminal;
+  cfg = config.myHomeManager.lxterminal;
 in {
-  options.programs.lxterminal = {
-    enable = lib.mkEnableOption "Enable lxterminal config";
-
+  options.myHomeManager.lxterminal = {
     fontname = lib.mkOption {
       type = lib.types.str;
       default = "Monospace 10";
