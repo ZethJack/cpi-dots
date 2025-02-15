@@ -1,17 +1,8 @@
-{
-  lib,
-  hostname,
-  ...
-}: let
-  # hostname = builtins.replaceStrings ["\n"] [""] (builtins.readFile "/etc/hostname");
-  fontName =
-    if lib.hasPrefix "clockworkpi" hostname
-    then "Monospace 16"
-    else "Monospace 10";
+{...}: let
 in {
   xdg.configFile."lxterminal/lxterminal.conf".text = ''
     [general]
-    fontname=${fontName}
+    fontname=Monospace 16
     selchars=-A-Za-z0-9,./?%&#:_
     scrollback=1000
     boldbright=true
