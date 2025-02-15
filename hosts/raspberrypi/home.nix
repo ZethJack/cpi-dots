@@ -17,6 +17,7 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
   myHomeManager = {
     bundles.general.enable = true;
+    bundles.rpi.enable = true;
     lxterminal = {
       enable = lib.mkDefault true;
     };
