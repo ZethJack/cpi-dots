@@ -14,14 +14,17 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
+  myHomeManager = {
+    bundles.general.enable = true;
+  };
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".bashrc".source = ../../files/.bashrc;
-    ".bash_aliases".source = ../../files/.bash_aliases;
+    # ".bashrc".source = ../../files/.bashrc;
+    # ".bash_aliases".source = ../../files/.bash_aliases;
     ".local/bin" = {
       source = ../../scripts;
       recursive = true;

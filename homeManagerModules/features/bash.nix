@@ -2,7 +2,7 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    historyControl = "ignoreboth";
+    historyControl = ["ignoreboth"];
     historySize = 1000;
     historyFileSize = 2000;
     shellOptions = [
@@ -21,6 +21,11 @@
       "cdf" = "cdd ; hx \$(pwd)";
       "cdb" = "cdd ; nhhs";
       "lg" = "lazygit";
+    };
+    sessionVariables = {
+      "PATH" = "$HOME/.local/bin:$PATH";
+      "EDITOR" = "hx";
+      "SUDO_EDITOR" = "/home/zeth/.nix-profile/bin/hx";
     };
   };
 

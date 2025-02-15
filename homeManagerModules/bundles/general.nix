@@ -53,6 +53,6 @@
   ];
 
   home.sessionVariables = {
-    FLAKE = "${config.home.homeDirectory}/nixconf";
+    FLAKE = "${config.home.homeDirectory}/.local/src/dotfiles";
   };
 }

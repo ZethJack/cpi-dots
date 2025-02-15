@@ -4,10 +4,7 @@
   lib,
   ...
 }: {
-  # xdg.configFile."lf/icons".source = ./lf/icons;
-  home.file = {
-    ".config/lf/icons".source = ../files/lficons;
-  };
+  xdg.configFile."lf/icons".source = ./icons;
 
   programs.lf = {
     enable = true;
@@ -21,9 +18,9 @@
                 text/*|application/json)
                     lf -remote "send $id \$$EDITOR \$fx" ;;
                 image/*)
-                    ${lib.getExe pkgs.imv} $fx ;;
+                    ${lib.getExe pkgs.imv} "$fx" ;;
                 audio/*)
-                    ${lib.getExe pkgs.mpv} --no-terminal $fx ;;
+                    ${lib.getExe pkgs.mpv} "$fx" ;;
                 video/*)
                     ${lib.getExe pkgs.mpv} --no-terminal "$f" ;;
                 application/pdf|application/epub+zip)
@@ -78,14 +75,13 @@
       gv = "cd ~/Videos";
       go = "cd ~/Documents";
       gc = "cd ~/.config";
-      gn = "cd ~/nixconf";
+      gn = "cd ~/.local/src/nixconf";
       gp = "cd ~/Projects";
       gs = "cd ~/.local/share";
       gm = "cd /run/media";
 
       ee = "editor-open";
       "e." = "edit-dir";
-      V = ''''$${pkgs.bat}/bin/bat --paging=always --theme=gruvbox "$f"'';
 
       "<C-d>" = "5j";
       "<C-u>" = "5k";
@@ -129,4 +125,35 @@
       setlocal ~/Downloads/ sortby time
     '';
   };
+
+  programs.zsh.initExtra = let
+    lfColors =
+      map
+      (
+        dir: ''~/${dir}=04;33:''
+      )
+      (config.myHomeManager.impermanence.data.directories);
+
+    lfExport = ''
+      export LF_COLORS="${lib.concatStrings lfColors}"
+    '';
+  in
+    lib.mkAfter ''
+      lfcd () {
+          ${lfExport}
+          tmp="$(mktemp)"
+          lf -last-dir-path="$tmp" "$@"
+          #./lfrun
+          if [ -f "$tmp" ]; then
+              dir="$(cat "$tmp")"
+              rm -f "$tmp"
+              if [ -d "$dir" ]; then
+                  if [ "$dir" != "$(pwd)" ]; then
+                      cd "$dir"
+                  fi
+              fi
+          fi
+      }
+      alias lf="lfcd"
+    '';
 }
