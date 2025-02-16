@@ -38,9 +38,9 @@
         args = ["--stdio"];
       };
 
-      language-server.ansible = {
-        command = "ansible-language-server";
-        args = ["--stdio"];
+      marksman = {
+        command = "marksman";
+        args = ["server"];
       };
 
       language = [
@@ -82,10 +82,16 @@
           language-servers = ["yaml"];
         }
         {
-          name = "ansible";
-          scope = "source.ansible";
-          file-types = ["yml.ansible" "yaml.ansible"];
-          language-servers = ["ansible"];
+          name = "markdown";
+          scope = "source.markdown";
+          file-types = ["md" "markdown"];
+          auto-format = true;
+          language-servers = ["marksman"];
+          # Optional: Add a formatter for Markdown (e.g., prettier)
+          formatter = {
+            command = "prettier";
+            args = ["--parser" "markdown"];
+          };
         }
       ];
     };

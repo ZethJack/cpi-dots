@@ -38,8 +38,8 @@
     libxml2
     mpv
     nodePackages.yaml-language-server
-    ansible
-    ansible-language-server
+    marksman
+    nodePackages.prettier
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nixd
