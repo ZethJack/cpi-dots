@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -24,8 +24,8 @@
     };
     sessionVariables = {
       "PATH" = "$HOME/.local/bin:$PATH";
-      "EDITOR" = "hx";
-      "SUDO_EDITOR" = "/home/zeth/.nix-profile/bin/hx";
+      "EDITOR" = "${pkgs.helix}/bin/hx";
+      "SUDO_EDITOR" = "${pkgs.helix}/bin/hx";
     };
   };
 
