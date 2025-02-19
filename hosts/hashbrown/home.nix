@@ -107,7 +107,7 @@
     enable = true;
     defaultCacheTtl = 1800;
     enableSshSupport = true;
-    pinentryPackage = pkgs.pinentry-gtk2;
+    pinentryPackage = pkgs.pinentry-qt;
   };
 
   fonts.fontconfig = {
