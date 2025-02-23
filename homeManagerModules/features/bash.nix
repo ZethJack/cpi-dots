@@ -11,7 +11,7 @@
     ];
     shellAliases = {
       "ccd" = "cd ~/.local/src/dotfiles";
-      "yt" = "yt-dlp --add-metadata -i --external-downloader aria2c:\"-c -j 3 -x 3 -k 1M\" --sponsorblock-remove sponsor,selfpromo,interaction -o \"%(title)s.\(ext)s\"";
+      "yt" = "yt-dlp --add-metadata -i --external-downloader aria2c:\"-c -j 3 -x 3 -k 1M\" --sponsorblock-remove sponsor,selfpromo,interaction -o \"%(title)s.%(ext)s\"";
       "yta" = "yt -x -f bestaudio/best --audio-format opus";
       "yta-ogg" = "yt -x -f bestaudio/best --audio-format ogg";
       "tat" = "tmux a || tmux";
