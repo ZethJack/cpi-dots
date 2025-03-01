@@ -33,16 +33,17 @@
     fzf
     gcr
     git
+    hblock
     lazygit
     lemminx
     libxml2
-    mpv
-    nodePackages.yaml-language-server
     marksman
-    nodePackages.prettier
+    mpv
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nixd
+    nodePackages.prettier
+    nodePackages.yaml-language-server
     noto-fonts-emoji
     p7zip
     shfmt
