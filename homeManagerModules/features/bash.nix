@@ -17,8 +17,8 @@
       "tat" = "tmux a || tmux";
       "nhhs" = "nh home switch";
       "mkd" = "mkdir -pv";
-      "cdd" = "cd ~/.local/src/dotfiles";
-      "cdf" = "cdd ; hx \$(pwd)";
+      "cdd" = "cd \$FLAKE";
+      "cdf" = "cdd ; hx \$FLAKE";
       "cdb" = "cdd ; nhhs";
       "lg" = "lazygit";
     };
