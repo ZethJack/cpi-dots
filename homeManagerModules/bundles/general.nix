@@ -50,7 +50,7 @@
     unrar
     unzip
     wofi
-    wofi-pass
+    (wofi-pass.override {extensions = exts: [exts.pass-otp];})
     yt-dlp
   ];
 
