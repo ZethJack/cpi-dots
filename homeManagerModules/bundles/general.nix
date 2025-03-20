@@ -16,6 +16,7 @@
   myHomeManager.lf.enable = lib.mkDefault true;
   myHomeManager.helix.enable = lib.mkDefault true;
   myHomeManager.grimslurp.enable = lib.mkDefault true;
+  myHomeManager.appinstall.enable = lib.mkDefault true;
 
   # myHomeManager.bottom.enable = lib.mkDefault true;
 
