@@ -46,6 +46,7 @@
     nodePackages.prettier
     nodePackages.yaml-language-server
     noto-fonts-emoji
+    ruffle
     p7zip
     shfmt
     unrar
