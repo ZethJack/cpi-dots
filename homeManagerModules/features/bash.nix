@@ -25,6 +25,7 @@
       "PATH" = "$HOME/.local/bin:$PATH";
       "EDITOR" = "${pkgs.helix}/bin/hx";
       "SUDO_EDITOR" = "${pkgs.helix}/bin/hx";
+      "SDL_GAMECONTROLLERCONFIG" = "0300de1f436c6f636b776f726b207500,Clockwork uConsole Keyboard,platform:Linux,a:b0,b:b1,x:b2,y:b3,back:b4,start:b5,leftx:a0,lefty:a1,";
     };
   };
 
